@@ -1,108 +1,134 @@
 
 ---
 
-## 🧱 Layouts en Astro
+## 9. Layouts y Props en Astro con TypeScript
 
-### ¿Qué es un Layout?
+### 9.1 ¿Qué es un Layout en Astro?
 
-Un **Layout** es un componente `.astro` que actúa como plantilla envolviendo otras páginas o componentes. Se usa para evitar duplicar secciones comunes como headers, footers, o metaetiquetas `<head>`.
+Un **Layout** es un componente `.astro` reutilizable que envuelve otras páginas o componentes. Sirve para definir una estructura común: encabezados, pies de página, barras laterales, etc.
 
-### Ubicación típica
+Es similar a un "template base" donde otras páginas se insertan en una ranura (`<slot />`).
 
-Los layouts suelen colocarse en la carpeta `src/layouts/`.
+---
 
-### Ejemplo básico de un layout: `BaseLayout.astro`
+### 9.2 Crear un Layout
+
+Supongamos que quieres que todas tus páginas tengan un header y un footer. Puedes crear un layout así:
+
+📄 `src/layouts/BaseLayout.astro`
 
 ```astro
 ---
-// src/layouts/BaseLayout.astro
+interface Props {
+  title: string;
+}
 const { title } = Astro.props;
 ---
+
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
   </head>
   <body>
-    <header><h1>{title}</h1></header>
+    <header>
+      <h1>{title}</h1>
+    </header>
+
     <main>
-      <slot /> <!-- Aquí va el contenido de la página -->
+      <slot />  <!-- Aquí se inyecta el contenido de la página -->
     </main>
-    <footer>© 2025 Mi sitio</footer>
+
+    <footer>
+      <p>© 2025 - Mi sitio Astro</p>
+    </footer>
   </body>
 </html>
 ```
 
-### Cómo se usa en una página `.astro`
+---
+
+### 9.3 Usar el Layout en una página
+
+📄 `src/pages/index.astro`
 
 ```astro
 ---
-// src/pages/about.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Sobre Nosotros">
-  <p>Somos un equipo apasionado por la web.</p>
+
+<BaseLayout title="Inicio">
+  <p>Bienvenido a la página principal de Astro.</p>
 </BaseLayout>
 ```
 
-> 🔁 Todo lo que esté entre `<BaseLayout> ... </BaseLayout>` se inyecta dentro del `<slot />` del layout.
+> El contenido dentro de `<BaseLayout>...</BaseLayout>` será inyectado en el `<slot />`.
 
 ---
 
-## 🎁 Props en Astro
+### 9.4 Tipado de Props con TypeScript
 
-### ¿Qué son?
+En Astro podés usar TypeScript para definir tipos seguros. Esto se hace dentro del bloque `---` usando una `interface`, como hicimos arriba.
 
-Las **props** son datos que se le pasan a un componente (o layout) desde otro componente o página.
-
-### ¿Cómo se acceden?
-
-En un archivo `.astro`, las props se acceden mediante `Astro.props`.
+Ejemplo de props con múltiples valores tipados:
 
 ```astro
 ---
-const { title, descripcion } = Astro.props;
+interface Props {
+  title: string;
+  subtitle?: string;  // opcional
+  showHeader?: boolean;
+}
+
+const { title, subtitle = "", showHeader = true } = Astro.props;
 ---
-<h2>{title}</h2>
-<p>{descripcion}</p>
 ```
 
-### Paso de props desde el padre
+De esta manera:
+
+* Sabés exactamente qué espera tu componente/layout.
+* Tenés autocompletado y chequeo de tipos.
+* Evitás errores al usar el componente.
+
+---
+
+### 9.5 Validar props opcionales con valores por defecto
+
+Podés definir valores por defecto al desestructurar `Astro.props`, como se muestra arriba (`subtitle = ""`, `showHeader = true`). También podés hacerlo así:
 
 ```astro
----
-// src/pages/index.astro
-import Card from '../components/Card.astro';
----
-<Card title="Bienvenido" descripcion="Gracias por visitar nuestro sitio." />
+const props = Astro.props;
+const title = props.title;
+const showHeader = props.showHeader ?? true;
 ```
 
 ---
 
-## 🧩 Slots + Props
+### 9.6 Props en otros componentes `.astro`
 
-Los layouts y componentes pueden recibir tanto props como contenido dinámico (slots):
+Lo mismo aplica para componentes que no son layouts:
+
+📄 `src/components/Alert.astro`
 
 ```astro
 ---
-// src/layouts/ConSidebar.astro
-const { titulo } = Astro.props;
+interface Props {
+  type: 'success' | 'error' | 'warning';
+  message: string;
+}
+
+const { type, message } = Astro.props;
 ---
-<section>
-  <aside>Barra lateral</aside>
-  <main>
-    <h2>{titulo}</h2>
-    <slot />
-  </main>
-</section>
+
+<div class={`alert alert-${type}`}>
+  {message}
+</div>
 ```
 
-Y en su uso:
+Y lo usás así:
 
 ```astro
-<ConSidebar titulo="Noticias">
-  <p>Esta es la última noticia publicada.</p>
-</ConSidebar>
+<Alert type="success" message="Todo salió bien" />
 ```
 
 ---
