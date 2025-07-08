@@ -1,7 +1,7 @@
 
 ---
 
-## 10. CSS en Astro: Estilos locales y globales
+## CSS en Astro: Estilos locales y globales
 
 Astro te permite escribir estilos en varios niveles:
 
@@ -14,7 +14,7 @@ Aquí nos enfocamos en los estilos **locales** y **globales** usando CSS puro.
 
 ---
 
-### 10.1 Estilos por componente (locales)
+### Estilos por componente (locales)
 
 Podés escribir estilos directamente dentro de un archivo `.astro`, y por defecto serán **scoped**, es decir, **solo afectarán a ese componente**.
 
@@ -47,7 +47,7 @@ const { title, content } = Astro.props;
 
 ---
 
-### 10.2 Estilos globales en un componente
+### Estilos globales en un componente
 
 Si querés que un estilo sea global aunque esté dentro de un componente, podés usar el atributo `:global`.
 
@@ -80,7 +80,7 @@ También podés hacer global solo una parte del selector:
 
 ---
 
-### 10.3 Estilos globales en archivos separados
+### Estilos globales en archivos separados
 
 Para definir estilos que se apliquen a toda la aplicación, podés crear un archivo CSS global (por ejemplo, `src/styles/global.css`) y usarlo en tu layout o en el `src/pages/_app.astro` si lo usás.
 
@@ -111,7 +111,7 @@ import '../styles/global.css';
 
 ---
 
-### 10.4 Usar archivos CSS separados por componente
+### Usar archivos CSS separados por componente
 
 Otra opción es tener un archivo `.css` por cada componente:
 
@@ -141,7 +141,7 @@ import './Button.css';
 
 ---
 
-### 10.5 Buenas prácticas
+### Buenas prácticas
 
 * Usá estilos scopeados (`<style>` en `.astro`) siempre que sea posible para evitar conflictos.
 * Usá `:global(...)` solo para resets, estilos base o clases reutilizables (como `.btn`, `.container`).
