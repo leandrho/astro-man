@@ -1,5 +1,5 @@
 
-## 6. Estructura de un proyecto Astro
+## Estructura de un proyecto Astro
 
 Cuando creas un proyecto con `npm create astro@latest`, Astro genera una estructura de carpetas y archivos similar a la siguiente:
 
@@ -20,13 +20,13 @@ my-astro-project/
 └── README.md               # Guía rápida del proyecto
 ```
 
-### 6.1 Explicación de archivos raíz
+### Explicación de archivos raíz
 
 * **astro.config.mjs**: aquí defines las integraciones (plugins), rutas de contenido, personalizaciones de build, adapters para deploy y más.
 * **package.json**: listas las dependencias (`dependencies`, `devDependencies`) y defines scripts útiles (`dev`, `build`, `preview`).
 * **tsconfig.json**: si usas TypeScript, configura los paths, target, strictness, etc.
 
-### 6.2 Carpetas clave
+### Carpetas clave
 
 * **public/**: todo lo que pongas aquí se copia tal cual al build final. Ideal para favicons, `robots.txt`, y archivos que no necesitan procesamiento.
 * **src/components/**: componentes aislados que pueden recibir props y generar marcación. Ej: botones, cards, formularios.
@@ -36,7 +36,7 @@ my-astro-project/
 * **src/styles/**: puedes incluir CSS global o variables CSS personalizadas. También aquí van archivos Tailwind u otros preprocesadores.
 * **src/assets/**: recursos importables desde tus componentes. Astro utiliza Vite, por lo que al importar imágenes o fuentes, se optimizan automáticamente.
 
-### 6.3 Flujo de trabajo interno
+### Flujo de trabajo interno
 
 1. **Desarrollo (`npm run dev`)**: Astro arranca un servidor local con recarga en caliente via Vite.
 2. **Build (`npm run build`)**: se generan los archivos estáticos optimizados.
