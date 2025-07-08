@@ -1,9 +1,9 @@
 
 ---
 
-## 9. Layouts y Props en Astro con TypeScript
+## Layouts y Props en Astro con TypeScript
 
-### 9.1 ¿Qué es un Layout en Astro?
+### ¿Qué es un Layout en Astro?
 
 Un **Layout** es un componente `.astro` reutilizable que envuelve otras páginas o componentes. Sirve para definir una estructura común: encabezados, pies de página, barras laterales, etc.
 
@@ -11,7 +11,7 @@ Es similar a un "template base" donde otras páginas se insertan en una ranura (
 
 ---
 
-### 9.2 Crear un Layout
+### Crear un Layout
 
 Supongamos que quieres que todas tus páginas tengan un header y un footer. Puedes crear un layout así:
 
@@ -48,7 +48,7 @@ const { title } = Astro.props;
 
 ---
 
-### 9.3 Usar el Layout en una página
+### Usar el Layout en una página
 
 📄 `src/pages/index.astro`
 
@@ -66,7 +66,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 ---
 
-### 9.4 Tipado de Props con TypeScript
+### Tipado de Props con TypeScript
 
 En Astro podés usar TypeScript para definir tipos seguros. Esto se hace dentro del bloque `---` usando una `interface`, como hicimos arriba.
 
@@ -92,7 +92,7 @@ De esta manera:
 
 ---
 
-### 9.5 Validar props opcionales con valores por defecto
+### Validar props opcionales con valores por defecto
 
 Podés definir valores por defecto al desestructurar `Astro.props`, como se muestra arriba (`subtitle = ""`, `showHeader = true`). También podés hacerlo así:
 
@@ -104,7 +104,7 @@ const showHeader = props.showHeader ?? true;
 
 ---
 
-### 9.6 Props en otros componentes `.astro`
+### Props en otros componentes `.astro`
 
 Lo mismo aplica para componentes que no son layouts:
 
