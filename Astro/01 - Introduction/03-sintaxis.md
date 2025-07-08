@@ -1,9 +1,9 @@
 
-## 7. Sintaxis de Astro
+# Sintaxis de Astro
 
 Astro utiliza una sintaxis propia en los archivos `.astro`, que combina HTML con bloques de JavaScript/TypeScript. La sintaxis está diseñada para ser familiar, especialmente si has trabajado con frameworks como React, Vue o Svelte.
 
-### 7.1 Estructura básica de un archivo `.astro`
+### Estructura básica de un archivo `.astro`
 
 ```astro
 ---
@@ -22,7 +22,7 @@ const nombre = "Astro";
 </html>
 ```
 
-### 7.2 El bloque `---`
+### El bloque `---`
 
 Todo lo que se coloca entre las líneas `---` al inicio del archivo es JavaScript (o TypeScript si lo habilitas). Aquí puedes importar componentes, definir variables, funciones, etc.
 
@@ -33,7 +33,7 @@ const saludo = "Hola Mundo";
 ---
 ```
 
-### 7.3 Interpolación de variables
+### Interpolación de variables
 
 Puedes insertar variables dentro del HTML con llaves `{}`:
 
@@ -41,7 +41,7 @@ Puedes insertar variables dentro del HTML con llaves `{}`:
 <h2>{saludo}</h2>
 ```
 
-### 7.4 Componentes
+### Componentes
 
 Puedes usar componentes `.astro` o de otros frameworks:
 
@@ -55,7 +55,7 @@ import Counter from '../components/Counter.jsx';
 <Counter client:load />
 ```
 
-### 7.5 Directivas de cliente
+### Directivas de cliente
 
 Permiten controlar cuándo se carga un componente con interactividad (normalmente de React, Vue, etc.). Algunas directivas comunes:
 
@@ -64,7 +64,7 @@ Permiten controlar cuándo se carga un componente con interactividad (normalment
 * `client:visible`: carga cuando el componente entra en el viewport.
 * `client:only="react"`: carga solo en el cliente, usando el framework especificado.
 
-### 7.6 Condicionales
+### Condicionales
 
 Astro permite condicionales simples dentro del HTML:
 
@@ -76,7 +76,7 @@ const logueado = true;
 {logueado ? <p>Bienvenido</p> : <a href="/login">Iniciar sesión</a>}
 ```
 
-### 7.7 Iteraciones
+### Iteraciones
 
 Puedes usar `.map()` para iterar sobre listas:
 
@@ -90,7 +90,7 @@ const productos = ["Pelota", "Zapatillas", "Camiseta"];
 </ul>
 ```
 
-### 7.8 Slots
+### Slots
 
 Los componentes `.astro` pueden tener slots para contenido dinámico:
 
