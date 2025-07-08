@@ -1,9 +1,9 @@
 
-## 8. Uso de JavaScript/TypeScript para interactividad
+## Uso de JavaScript/TypeScript para interactividad
 
 Astro está diseñado para generar HTML estático, pero permite añadir interactividad en el navegador mediante componentes de frameworks como React, Vue, Svelte, Solid, etc., o incluso con JavaScript/TypeScript nativo.
 
-### 8.1 Opciones para agregar dinamismo
+### Opciones para agregar dinamismo
 
 1. **Componentes con frameworks (usando `client:*`)**
    Astro permite integrar componentes de frameworks modernos para manejar interactividad. Ejemplo con React:
@@ -52,7 +52,7 @@ Astro está diseñado para generar HTML estático, pero permite añadir interact
 3. **Eventos personalizados**
    Podés comunicar componentes Astro con componentes interactivos usando eventos. Por ejemplo, disparar un evento desde un componente React hacia el DOM.
 
-### 8.2 Buenas prácticas
+### Buenas prácticas
 
 * Usá `client:*` solo en los componentes que realmente necesitan JS.
 * Preferí `client:idle` o `client:visible` antes que `client:load` si no es urgente.
