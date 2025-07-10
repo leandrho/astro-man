@@ -1,3 +1,6 @@
+
+# Alias de rutas
+
 Configurar "path aliases" (alias de rutas) en TypeScript te permite crear atajos o nombres más amigables para las rutas de importación de tus módulos. Esto es especialmente útil en proyectos grandes para evitar rutas relativas largas y confusas como `../../../../components/Button` y en su lugar usar algo como `@components/Button`.
 
 Se configuran principalmente a través del archivo `tsconfig.json` en tu proyecto TypeScript. Aquí te explico en detalle cómo hacerlo:
